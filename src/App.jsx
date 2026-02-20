@@ -56,7 +56,7 @@ function App() {
       text-center
       md:text-3xl
       ">
-        <h1>Team {list.length}</h1>
+        <h1>I.T Department Team {list.length}</h1>
       </div>
 
         <div className="flex 
@@ -108,7 +108,7 @@ function App() {
               Add Member
             </button>
 
-            <button
+            {/* <button
               className="bg-rose-500 
               text-white 
               px-4 py-2 
@@ -118,7 +118,7 @@ function App() {
               onClick={() => setList(list.slice(0, -1))}
             >
               Delete Last
-            </button>
+            </button> */}
           </div>
 
           <div className="w-full mt-6">
