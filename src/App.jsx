@@ -1,6 +1,7 @@
-import { use, useEffect, useState } from 'react'
+import {  useEffect, useState } from 'react'
 
 import './App.css'
+import { MemberTable } from './Member'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -33,7 +34,7 @@ function App() {
   }, [list]);
   return (
     <>
-      <div>
+      <form onSubmit={ (e)=>e.preventDefault() }>
         <input
           type="text"
           name="name"
@@ -48,26 +49,18 @@ function App() {
           onChange={(e) => setRole(e.target.value)}
         />
 
-        <button onClick={addMember}>Add Member</button>
+        <button 
+        type= "submit"
+        onClick={addMember}>Add Member</button>
 
-        <table border="1" cellPadding="8" style={{ marginTop: "10px" }}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((member) => (
-              <tr key={member.id}>
-                <td>{member.name}</td>
-                <td>{member.role}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button onClick={() => setList(list.filter((members) => members.id !== members.id))}>Delete</button>
-      </div>
+        <div>
+          <MemberTable list={list} setList={setList} />
+        </div>
+
+        <button onClick={() => 
+          setList(list.filter((members) => 
+          members.id !== members.id))}>Delete</button>
+      </form>
       
     </>
   )
