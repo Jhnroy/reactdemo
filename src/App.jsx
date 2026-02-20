@@ -14,7 +14,7 @@ function App() {
     name: 'name',
     role: 'role',
     },{
-      id: 1,
+      id: 2,
       name: 'tess',
       role: 'dev',
     }
@@ -22,11 +22,14 @@ function App() {
   console.log(list)
 
   const addMember = () => {
+    if (!name.trim() || !role.trim()) return;
     setList([...list, {
       id: list.length + 1,
       name: name,
       role: role,
     }]);
+    setName('');
+    setRole('');
   }
   
   useEffect(() => {
@@ -34,32 +37,94 @@ function App() {
   }, [list]);
   return (
     <>
-      <form onSubmit={ (e)=>e.preventDefault() }>
-        <input
-          type="text"
-          name="name"
-          placeholder="name"
-          onChange={(e) => setName(e.target.value)}
-        />
+    
+      <form
+      className="flex flex-col
+      
+      bg-gray-500
+      items-center
+      justify-center
+      h-screen
+      rounded-sm
+      " 
+      onSubmit={ (e)=>e.preventDefault() }>
+      <div className="
+      text-lg
+      mb-6
+      font-bold
+      text-gray-100
+      text-center
+      md:text-3xl
+      ">
+        <h1>Team {list.length}</h1>
+      </div>
 
-        <input
-          type="text"
-          name="role"
-          placeholder="role"
-          onChange={(e) => setRole(e.target.value)}
-        />
+        <div className="flex 
+        flex-col 
+        sm:flex-row 
+        gap-4 
+        items-center 
+        mb-4">
+          <input
+            className="border-2 
+            rounded px-3 
+            py-2 w-64 sm:w-72 
+            focus:outline-none 
+            focus:ring-2 
+            focus:ring-indigo-400"
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-        <button 
-        type= "submit"
-        onClick={addMember}>Add Member</button>
-
-        <div>
-          <MemberTable list={list} setList={setList} />
+          <input
+            className="border-2 rounded 
+            px-3 py-2 
+            w-64 
+            sm:w-72 
+            focus:outline-none 
+            focus:ring-2 
+            focus:ring-indigo-400"
+            type="text"
+            name="role"
+            placeholder="Role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          />
         </div>
 
-        <button onClick={() => 
-          setList(list.filter((members) => 
-          members.id !== members.id))}>Delete</button>
+        <div className="w-full flex flex-col items-center">
+          <div className="flex items-center gap-2">
+            <button
+              className="bg-indigo-600 
+              text-white 
+              px-4 py-2 rounded 
+              hover:bg-indigo-700 transition"
+              type="button"
+              onClick={addMember}
+            >
+              Add Member
+            </button>
+
+            <button
+              className="bg-rose-500 
+              text-white 
+              px-4 py-2 
+              rounded hover:bg-red-600 
+              transition"
+              type="button"
+              onClick={() => setList(list.slice(0, -1))}
+            >
+              Delete Last
+            </button>
+          </div>
+
+          <div className="w-full mt-6">
+            <MemberTable list={list} setList={setList} />
+          </div>
+        </div>
       </form>
       
     </>
