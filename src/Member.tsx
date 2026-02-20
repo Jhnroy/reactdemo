@@ -38,17 +38,36 @@ export const MemberTable: React.FC<Props> = ({ list, setList }) => {
   };
 
   return (
-    <div className="flex justify-center mt-6">
-      <table className="w-full max-w-4xl border border-gray-300 rounded-lg shadow-md text-lg">
-        <thead className="bg-gray-100">
+    <div className="flex justify-center mt-6 ">
+      <table className="w-full 
+      dark:text-gray-100
+      max-w-4xl 
+      border 
+      border-gray-300 
+      rounded-lg shadow-md 
+      text-lg">
+        <thead className="bg-gray-100 ">
           <tr>
-            <th className="px-6 py-4 font-semibold text-gray-700 border-b">
+            <th className="px-6 py-4 
+            font-semibold 
+            text-gray-700 
+            border-b">
               Name
             </th>
-            <th className="px-6 py-4 font-semibold text-gray-700 border-b">
+            <th className="px-6 
+            py-4 
+            font-semibold 
+            
+            text-gray-700 
+            border-b">
               Role
             </th>
-            <th className="px-6 py-4 font-semibold text-gray-700 border-b text-center">
+            <th className="px-6 
+            py-4 
+            font-semibold 
+            
+            text-gray-700 
+            border-b text-center">
               Actions
             </th>
           </tr>
@@ -68,7 +87,7 @@ export const MemberTable: React.FC<Props> = ({ list, setList }) => {
             list.map(member => (
               <tr
                 key={member.id}
-                className="hover:bg-gray-50 transition"
+                // className="hover:bg-gray-50 transition"
               >
                 <td className="px-6 py-4 border-b">
                   {editId === member.id ? (
@@ -105,7 +124,9 @@ export const MemberTable: React.FC<Props> = ({ list, setList }) => {
                       </button>
                       <button
                         onClick={() => setEditId(null)}
-                        className="px-3 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
+                        className="px-3 py-1 
+                        bg-gray-400 text-white 
+                        rounded hover:bg-gray-500"
                       >
                         Cancel
                       </button>
@@ -114,7 +135,10 @@ export const MemberTable: React.FC<Props> = ({ list, setList }) => {
                     <>
                       <button
                         onClick={() => handleEdit(member)}
-                        className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        className="px-3 py-1 
+                        bg-blue-500 
+                        text-white 
+                        rounded hover:bg-blue-600"
                       >
                         Edit
                       </button>

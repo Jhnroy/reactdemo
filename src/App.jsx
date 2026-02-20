@@ -5,7 +5,7 @@ import { MemberTable } from './Member'
 
 function App() {
   // const [count, setCount] = useState(0)
-
+  const [darkmode, setDarkmode] = useState('')
   const [name, setName] = useState('')
   const [role, setRole] = useState('')
   const [list, setList] = useState([
@@ -36,11 +36,11 @@ function App() {
    document.title = `Team ${list.length} members`
   }, [list]);
   return (
-    <>
+    <div className={`${darkmode}`}>    
     
       <form
       className="flex flex-col
-      
+      dark:bg-gray-800
       bg-gray-500
       items-center
       justify-center
@@ -56,7 +56,8 @@ function App() {
       text-center
       md:text-3xl
       ">
-        <h1>I.T Department Team has a total of {list.length} members</h1>
+        
+        <h1>I.T Department Team has a total of {list.length} </h1>
       </div>
 
         <div className="flex 
@@ -69,11 +70,13 @@ function App() {
             className="border-2 
             rounded px-3 
             py-2 w-64 sm:w-72 
+            dark:text-gray-100
             focus:outline-none 
             focus:ring-2 
             focus:ring-indigo-400"
             type="text"
             name="name"
+            
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -84,6 +87,7 @@ function App() {
             px-3 py-2 
             w-64 
             sm:w-72 
+            dark:text-gray-100
             focus:outline-none 
             focus:ring-2 
             focus:ring-indigo-400"
@@ -125,9 +129,31 @@ function App() {
             <MemberTable list={list} setList={setList} />
           </div>
         </div>
+        <button
+        className="
+          flex items-center gap-2
+          mt-6
+          dark:bg-gray-700
+          px-4 py-2
+          rounded-full
+          bg-gray-900
+          text-white
+          shadow-md
+          hover:bg-gray-800
+          active:scale-95
+          transition-all duration-300
+        "
+        onClick={()=> setDarkmode ((prev) => prev === 'dark' ? '' : 'dark' )}
+      >
+         {darkmode === 'dark' ? '☀️' : '🌙'}
+        <span className="text-sm font-medium">
+          {darkmode === 'dark' ? 'Light Mode' : 'Dark Mode'}
+        </span>
+      </button>
       </form>
       
-    </>
+      
+    </div>
   )
 }
 
