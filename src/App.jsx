@@ -56,7 +56,7 @@ function App() {
       text-center
       md:text-3xl
       ">
-        <h1>I.T Department Team {list.length}</h1>
+        <h1>I.T Department Team has a total of {list.length} members</h1>
       </div>
 
         <div className="flex 
